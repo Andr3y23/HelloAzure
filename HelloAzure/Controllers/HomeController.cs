@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using HelloAzure.Models;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +19,12 @@ namespace HelloAzure.Controllers
         {
             string model = _configuration["Greeting"];
             return View("Index", model);
+        }
+
+        /// <exception cref="InvalidOperationException">Sorry, this feature is not supported!</exception>
+        public IActionResult TestException()
+        {
+            throw new InvalidOperationException("Sorry, this feature is not supported!");
         }
 
         public IActionResult About()
